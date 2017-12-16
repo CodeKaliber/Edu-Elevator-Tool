@@ -19,6 +19,34 @@ export default class HomePage extends Component {
         this.refs.countEle.value = '';
     }
 
+// Controlling Elevators at given point
+controllerElevator.create = function (countEle, floorEle, floorsMin, floorMax) {
+
+  //this has to be handled by the prototype, so it has access to the controller itself in the event handlers
+  function listenNewEvent (newElev) {
+    countEle.listenNewEvent(newElev, "atFloor");
+    countEle.listenNewEvent(newElev, "floorOutOfMax");
+    countEle.listenNewEvent(newElev, "isNeedingMaintenance");
+    countEle.listenNewEvent(newElev, "Arivedfloor");
+    countEle.listenNewEvent(newElev, "doorsAreOpen");
+    countEle.listenNewEvent(newElev, "doorsAreClosed");
+    countEle.listenNewEvent(newElev, "emptyElevator");
+    countEle.listenNewEvent(newElev, "ElevatorOccupied");
+  }
+
+    switch (controllerElevator) {
+        case "unoccupied":
+        countEle.on(eventElvaLocation, emptyElevator);
+          break;
+        case "occupied":
+        countEle.on(eventElvaLocation, ElevatorOccupied);
+          break;
+        case "need_maintenance":
+        countEle.on(eventElvaLocation, isNeedingMaintenance);
+          break;
+      }
+    };
+
     render() {
         return(
             <div className='fullPage'>
