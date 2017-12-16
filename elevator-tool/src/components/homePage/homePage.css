@@ -1,0 +1,29 @@
+.fullPage {
+    width: 100%;
+    height: 400px;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: stretch;
+}
+
+.inputFloorElev {
+    width: 150px;
+    height: 20px;
+    padding: 0px 0px 0px 0px;
+    margin: 0px 10px 70px 0px;
+    font-size: 14px;
+    color: #999999;
+}
+
+.buttonControl {
+    width: 100px;
+    height: 30px;
+    font-size: 14px;
+    color: #000000;
+    border-radius: 5px;
+    background-color: #cbb200;
+}
